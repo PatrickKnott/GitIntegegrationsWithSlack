@@ -28,9 +28,9 @@ namespace GitIntegrationsWithSlack
             catch (Exception ex)
             {
                 Logger.WriteException(ex, "UpdateDefaultBranch Failed!");
+                throw ex;
             }
         }
-
 
         /// <summary>
         /// This call Disables force pushes to the branch and prevents it from being deleted.
@@ -55,8 +55,10 @@ namespace GitIntegrationsWithSlack
             catch (Exception ex)
             {
                 Logger.WriteException(ex, "DisableForcePushesAndPreventDeletion Failed!");
+                throw ex;
             }
         }
+
         public async Task UpdateRequiredReviews(string branchName, long repositoryId = -1)
         {
             if (repositoryId == -1)
@@ -74,6 +76,7 @@ namespace GitIntegrationsWithSlack
             catch(Exception ex)
             {
                 Logger.WriteException(ex, "UpdateRequiredReviews Failed!");
+                throw ex;
             }
         }
 
@@ -94,6 +97,7 @@ namespace GitIntegrationsWithSlack
             catch (Exception ex)
             {
                 Logger.WriteException(ex, "UpdateRequiredStatusChecks Failed!");
+                throw ex;
             }
         }
 
@@ -123,6 +127,7 @@ namespace GitIntegrationsWithSlack
             catch (Exception ex)
             {
                 Logger.WriteException(ex, "UpdateAddRepositoryToTeam Failed!");
+                throw ex;
             }
         }
 
@@ -166,6 +171,7 @@ namespace GitIntegrationsWithSlack
             catch (Exception ex)
             {
                 Logger.WriteException(ex, "UpdateBranchProtectionByTeamsWhoCanPushToBranch Failed!");
+                throw ex;
             }
         }
 

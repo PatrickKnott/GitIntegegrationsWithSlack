@@ -39,6 +39,7 @@ namespace GitIntegrationsWithSlack
             catch (Exception ex)
             {
                 Logger.WriteException(ex, "CreateRepo Failed!");
+                throw ex;
             }
         }
 
@@ -66,6 +67,7 @@ namespace GitIntegrationsWithSlack
             catch (Exception ex)
             {
                 Logger.WriteException(ex, "CreateBranch Failed!");
+                throw ex;
             }
         }
 

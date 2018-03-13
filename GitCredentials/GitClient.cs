@@ -60,40 +60,5 @@ namespace GitIntegrationsWithSlack
             _client.Credentials = credentials;
         }
 
-        /// <summary>
-        /// This is a resetter for the class, probably unnecessary.
-        /// </summary>
-        /// <param name="gitCredentials"></param>
-        /// <param name="productHeaderValue"></param>
-        /// <param name="gitHubEnterpriseUri"></param>
-        public void RebuildGitClient(GitCredentials gitCredentials, string productHeaderValue = null, string gitHubEnterpriseUri = null)
-        {
-            ProductHeaderValue = gitCredentials.UserName;
-            if (!String.IsNullOrWhiteSpace(productHeaderValue))
-            {
-                ProductHeaderValue = productHeaderValue;
-            }
-            if (!String.IsNullOrWhiteSpace(gitHubEnterpriseUri))
-            {
-                GitHubEnterprise = new Uri(gitHubEnterpriseUri);
-                _client = new GitHubClient(new ProductHeaderValue(gitCredentials.UserName), GitHubEnterprise);
-            }
-            else
-            {
-                _client = new GitHubClient(new ProductHeaderValue(gitCredentials.UserName));
-            }
-            Credentials credentials;
-            if (!String.IsNullOrWhiteSpace(gitCredentials.GitToken))
-            {
-                credentials = new Credentials(gitCredentials.GitToken);
-            }
-            else
-            {
-                credentials = new Credentials(gitCredentials.UserName, gitCredentials.Password);
-            }
-            _client.Credentials = credentials;
-        }
-
-
     }
 }
