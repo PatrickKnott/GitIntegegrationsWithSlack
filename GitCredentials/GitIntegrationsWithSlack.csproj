@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SetUpRepositoryCommandHandler.cs" />
+    <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="IExceptionLogger.cs" />
     <Compile Include="GitClient.cs" />
     <Compile Include="GitClientCreateMethods.cs" />
     <Compile Include="GitClientReadMethods.cs" />

@@ -11,6 +11,8 @@ namespace GitIntegrationsWithSlack
     {
         private GitHubClient _client;
 
+        public IExceptionLogger Logger;
+
         public string ProductHeaderValue { get; set; }
 
         public Repository Repository { get; set; }
@@ -25,9 +27,10 @@ namespace GitIntegrationsWithSlack
         /// This is the initial constructor.
         /// </summary>
         /// <param name="gitCredentials">Must have a userName.</param>
+        /// <param name="logger">Outputs the exception if there is an issue with a task.</param>
         /// <param name="productHeaderValue">must be GitHub username or the name of the application, sets internally if null.</param>
         /// <param name="gitHubEnterpriseUri">This is for an Enterprise, if one is ever used.</param>
-        public GitClient(GitCredentials gitCredentials, string productHeaderValue = null, string gitHubEnterpriseUri = null)
+        public GitClient(GitCredentials gitCredentials, IExceptionLogger logger, string productHeaderValue = null, string gitHubEnterpriseUri = null)
         {
             ProductHeaderValue = gitCredentials.UserName;
             if (!String.IsNullOrWhiteSpace(productHeaderValue))
@@ -52,6 +55,8 @@ namespace GitIntegrationsWithSlack
             {
                 credentials = new Credentials(gitCredentials.UserName, gitCredentials.Password);
             }
+
+            Logger = logger;
             _client.Credentials = credentials;
         }
 

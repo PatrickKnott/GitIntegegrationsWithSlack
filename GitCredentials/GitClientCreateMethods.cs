@@ -33,13 +33,12 @@ namespace GitIntegrationsWithSlack
                 }
                 else
                 {
-                    Repository = await Client.Repository.Create("CoolTestOrganization", newRepository);
+                    Repository = await Client.Repository.Create(organizationName, newRepository);
                 }
             }
             catch (Exception ex)
             {
-                //log exception method.
-                throw;
+                Logger.WriteException(ex, "CreateRepo Failed!");
             }
         }
 
@@ -66,8 +65,7 @@ namespace GitIntegrationsWithSlack
             }
             catch (Exception ex)
             {
-                //log exception method.
-                throw;
+                Logger.WriteException(ex, "CreateBranch Failed!");
             }
         }
 
