@@ -30,11 +30,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Octokit, Version=0.29.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Octokit.0.29.0\lib\net45\Octokit.dll</HintPath>
     </Reference>
+    <Reference Include="Paramore.Brighter, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paramore.Brighter.7.2.10\lib\net452\Paramore.Brighter.dll</HintPath>
+    </Reference>
+    <Reference Include="Paramore.Darker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paramore.Darker.1.1.0\lib\net461\Paramore.Darker.dll</HintPath>
+    </Reference>
+    <Reference Include="Polly, Version=5.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly.5.8.0\lib\net45\Polly.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,13 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CreateRepositoryCommand.cs" />
+    <Compile Include="Commands\CreateRepositoryCommandHandler.cs" />
+    <Compile Include="Queries\GetRepositoryByNameQuery.cs" />
+    <Compile Include="Queries\GetRepositoryByIdQuery.cs" />
+    <Compile Include="Queries\GetRepositoryByIdQueryHandler.cs" />
+    <Compile Include="Queries\GetRepositoryByIdQueryResult.cs" />
+    <Compile Include="Queries\GetRepositoryByNameQueryHandler.cs" />
+    <Compile Include="Queries\GetRepositoryByNameQueryResult.cs" />
     <Compile Include="SetUpRepositoryCommandHandler.cs" />
     <Compile Include="ConsoleLogger.cs" />
     <Compile Include="IExceptionLogger.cs" />
     <Compile Include="GitClient.cs" />
-    <Compile Include="GitClientCreateMethods.cs" />
-    <Compile Include="GitClientReadMethods.cs" />
-    <Compile Include="GitClientUpdateMethods.cs" />
     <Compile Include="GitCredentials.cs" />
     <Compile Include="HelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

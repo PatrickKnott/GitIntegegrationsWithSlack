@@ -8,7 +8,7 @@ namespace GitIntegrationsWithSlack
 {
     public static class SetUpRepositoryCommandHandler
     {
-        public static void SetUpNewRepository(string repositoryName, string organizationName = "Retail-Success", string defaultTeamName = "Posim", IExceptionLogger logger = null)
+        public static async Task SetUpNewRepository(string repositoryName, string organizationName = "Retail-Success", string defaultTeamName = "Posim", IExceptionLogger logger = null)
         {
             var credentials = new GitCredentials("PatrickKnott", "3435cd039c521dcf6b8af4a81f492fd542d1c1eb");
             IExceptionLogger thisLogger = new ConsoleLogger();
@@ -17,13 +17,13 @@ namespace GitIntegrationsWithSlack
                 thisLogger = logger;
             }
             var client = new GitClient(credentials, thisLogger, "GitIntegrationsWithSlack");
-            client.CreateRepo(repositoryName, organizationName).GetAwaiter().GetResult();
-            client.UpdateRequiredReviews("master").GetAwaiter();
-            client.UpdateRequiredStatusChecks("master").GetAwaiter();
-            client.CreateBranch().GetAwaiter().GetResult();
-            client.AddRepositoryToTeam(repositoryName, organizationName, defaultTeamName).GetAwaiter().GetResult();
-            client.UpdateBranchProtectionByTeamsWhoCanPushToBranch("develop", repositoryName, defaultTeamName).GetAwaiter().GetResult();
-            client.UpdateDefaultBranch(repositoryName, "develop").GetAwaiter().GetResult();
+            await client.CreateRepo(repositoryName, organizationName);
+            client.UpdateRequiredReviews("master");
+            client.UpdateRequiredStatusChecks("master");
+            await client.CreateBranch();
+            await client.AddRepositoryToTeam(repositoryName, organizationName, defaultTeamName);
+            await client.UpdateBranchProtectionByTeamsWhoCanPushToBranch("develop", repositoryName, defaultTeamName);
+            await client.UpdateDefaultBranch(repositoryName, "develop");
         }
     }
 }

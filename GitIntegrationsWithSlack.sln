@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitIntegrationsWithSlack", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestGitClasses", "consoleTestGitClasses\ConsoleTestGitClasses.csproj", "{93F22804-FCE6-4A57-89C0-F2055512EF40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubDefaultRepositoryCreationTests", "GitHubDefaultRepositoryCreationTests\GitHubDefaultRepositoryCreationTests.csproj", "{7158A3D5-A9AE-4252-8791-34364A1EB451}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{93F22804-FCE6-4A57-89C0-F2055512EF40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93F22804-FCE6-4A57-89C0-F2055512EF40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93F22804-FCE6-4A57-89C0-F2055512EF40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7158A3D5-A9AE-4252-8791-34364A1EB451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7158A3D5-A9AE-4252-8791-34364A1EB451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7158A3D5-A9AE-4252-8791-34364A1EB451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7158A3D5-A9AE-4252-8791-34364A1EB451}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
