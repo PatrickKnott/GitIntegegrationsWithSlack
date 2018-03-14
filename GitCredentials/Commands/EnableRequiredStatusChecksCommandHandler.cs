@@ -9,25 +9,22 @@ using Paramore.Brighter;
 
 namespace GitIntegrationsWithSlack.Commands
 {
-    public static partial class CreateRepository
+    public static partial class EnableRequiredStatusChecks
     {
         public class CommandHandler : RequestHandlerAsync<Command>
         {
             private readonly GitHubClient _client;
-
             public CommandHandler(GitHubClient client)
             {
                 _client = client;
             }
-            public override async Task<Command> HandleAsync(Command command, CancellationToken cancellationToken = default(CancellationToken))
+
+            public override async Task<Command> HandleAsync(Command command, CancellationToken cancellationToken = new CancellationToken())
             {
-                NewRepository newRepository = new NewRepository(command.RepositoryName)
-                {
-                    AutoInit = true,
-                    GitignoreTemplate = "VisualStudio",
-                    HasIssues = false
-                };
-                await _client.Repository.Create(command.Organization, newRepository);
+                var statusChecksUpdate =
+                    new BranchProtectionSettingsUpdate(
+                        new BranchProtectionRequiredStatusChecksUpdate(true, new List<string>()));
+                await _client.Repository.Branch.UpdateBranchProtection(command.Repository.Id, command.BranchName, statusChecksUpdate);
                 return await base.HandleAsync(command, cancellationToken);
             }
         }

@@ -9,7 +9,7 @@ using Paramore.Brighter;
 
 namespace GitIntegrationsWithSlack.Commands
 {
-    public static partial class CreateRepository
+    public static partial class SetDefaultBranch
     {
         public class CommandHandler : RequestHandlerAsync<Command>
         {
@@ -19,15 +19,13 @@ namespace GitIntegrationsWithSlack.Commands
             {
                 _client = client;
             }
-            public override async Task<Command> HandleAsync(Command command, CancellationToken cancellationToken = default(CancellationToken))
+            public override async Task<Command> HandleAsync(Command command, CancellationToken cancellationToken = new CancellationToken())
             {
-                NewRepository newRepository = new NewRepository(command.RepositoryName)
+                var repositoryUpdate = new RepositoryUpdate(command.Repository.Name)
                 {
-                    AutoInit = true,
-                    GitignoreTemplate = "VisualStudio",
-                    HasIssues = false
+                    DefaultBranch = command.BranchName
                 };
-                await _client.Repository.Create(command.Organization, newRepository);
+                await _client.Repository.Edit(command.Repository.Id, repositoryUpdate);
                 return await base.HandleAsync(command, cancellationToken);
             }
         }

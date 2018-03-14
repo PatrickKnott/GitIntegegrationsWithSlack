@@ -58,14 +58,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddRepositoryToTeamCommand.cs" />
+    <Compile Include="Commands\AddRepositoryToTeamCommandHandler.cs" />
+    <Compile Include="Commands\CreateBranchCommand.cs" />
+    <Compile Include="Commands\CreateBranchCommandHandler.cs" />
     <Compile Include="Commands\CreateRepositoryCommand.cs" />
     <Compile Include="Commands\CreateRepositoryCommandHandler.cs" />
+    <Compile Include="Commands\DisableForcePushAndDeletionCommand.cs" />
+    <Compile Include="Commands\DisableForcePushAndDeletionCommandHandler.cs" />
+    <Compile Include="Commands\EnableRequiredReviewsCommand.cs" />
+    <Compile Include="Commands\EnableRequiredReviewsCommandHandler.cs" />
+    <Compile Include="Commands\EnableRequiredStatusChecksCommand.cs" />
+    <Compile Include="Commands\EnableRequiredStatusChecksCommandHandler.cs" />
+    <Compile Include="Commands\SetDefaultBranchCommand.cs" />
+    <Compile Include="Commands\SetDefaultBranchCommandHandler.cs" />
+    <Compile Include="Queries\GetTeamIdQuery.cs" />
     <Compile Include="Queries\GetRepositoryByNameQuery.cs" />
     <Compile Include="Queries\GetRepositoryByIdQuery.cs" />
     <Compile Include="Queries\GetRepositoryByIdQueryHandler.cs" />
     <Compile Include="Queries\GetRepositoryByIdQueryResult.cs" />
     <Compile Include="Queries\GetRepositoryByNameQueryHandler.cs" />
     <Compile Include="Queries\GetRepositoryByNameQueryResult.cs" />
+    <Compile Include="Queries\GetTeamIdQueryHandler.cs" />
+    <Compile Include="Queries\GetTeamIdQueryResult.cs" />
     <Compile Include="SetUpRepositoryCommandHandler.cs" />
     <Compile Include="ConsoleLogger.cs" />
     <Compile Include="IExceptionLogger.cs" />
