@@ -261,4 +261,4 @@ __pycache__/
 *.pyc
 
 # ignore a single file
-GitCredentials.cs
+/GitCredentials.cs
