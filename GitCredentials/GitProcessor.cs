@@ -8,6 +8,7 @@ namespace GitIntegrationsWithSlack
 {
     public class GitProcessor
     {
+
         private readonly IAmACommandProcessor _commandProcessor;
         private readonly IQueryProcessor _queryProcessor;
         private readonly GitHubClientOptions _gitHubClientOptions;
