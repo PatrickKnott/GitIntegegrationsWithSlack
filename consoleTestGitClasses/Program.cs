@@ -8,7 +8,7 @@ namespace consoleTestGitClasses
         static void Main(string[] args)
         {
             //SetUpRepositoryCommandHandler.SetUpNewRepository("Bless.NewRepo70", "CoolTestOrganization", "Retail Success");
-            SetUpRepositoryCommandHandler.SetUpNewRepository("Bless.GitApiTest", "Retail-Success", "Bless");
+            var x = SetUpRepositoryCommandHandler.SetUpNewRepository("Bless.GitApiTest", "Retail-Success", "Bless");
             Console.ReadKey();
         }
     }

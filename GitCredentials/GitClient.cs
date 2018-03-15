@@ -9,18 +9,19 @@ using Paramore.Darker;
 
 namespace GitIntegrationsWithSlack
 {
-    public class GitClients
+    public class GitClient
     {
         public GitHubClient Client { get; }
+
 
         /// <summary>
         /// This is the initial constructor.
         /// </summary>
         /// <param name="gitCredentials">Must have a userName.</param>.
-        public GitClients(Credentials gitCredentials)
+        public GitClient(Credentials credentials, IExceptionLogger logger)
         {
-            Client = new GitHubClient(new ProductHeaderValue(gitCredentials.Login));
-            Client.Credentials = gitCredentials;
+            Client = new GitHubClient(new ProductHeaderValue(credentials.Login));
+            Client.Credentials = credentials;
         }
 
         public async Task<Repository> CreateRepository(string newRepositoryName, string organizationName = "")
@@ -93,7 +94,7 @@ namespace GitIntegrationsWithSlack
             await Client.Repository.Branch.RemoveReviewEnforcement(repositoryId, branchName);
         }
 
-        public async Task UpdateRequiredReviews(string branchName, long repositoryId)
+        public async void UpdateRequiredReviews(string branchName, long repositoryId)
         {
             var protectionSettingsUpdate =
                 new BranchProtectionSettingsUpdate(new BranchProtectionRequiredReviewsUpdate(true, false));
@@ -101,7 +102,7 @@ namespace GitIntegrationsWithSlack
                 protectionSettingsUpdate);
         }
 
-        public async Task UpdateRequiredStatusChecks(string branchName, long repositoryId)
+        public async void UpdateRequiredStatusChecks(string branchName, long repositoryId)
         {
             var statusChecksUpdate =
                 new BranchProtectionSettingsUpdate(
