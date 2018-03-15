@@ -13,12 +13,12 @@ namespace GitIntegrationsWithSlack.Commands
         public sealed class Command : Paramore.Brighter.Command
         {
             public string BranchName { get; }
-            public Repository Repository { get; }
+            public long RepositoryId { get; }
 
-            public Command(string branchName, Repository repository) : base(Guid.NewGuid())
+            public Command(long repositoryId, string branchName = "master") : base(Guid.NewGuid())
             {
                 BranchName = branchName;
-                Repository = repository;
+                RepositoryId = repositoryId;
             }
         }
     }

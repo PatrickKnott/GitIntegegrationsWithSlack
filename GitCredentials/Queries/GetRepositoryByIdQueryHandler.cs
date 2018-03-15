@@ -17,10 +17,9 @@ namespace GitIntegrationsWithSlack.Queries
                 var repository = await _client.Repository.Get(query.Id);
                 return new QueryResult(){Repository = repository};
             }
-
-            public QueryHandler(GitHubClient client)
+            public QueryHandler(GitHubClientOptions options)
             {
-                _client = client;
+                _client = options.GitHubClientFactory();
             }
         }
     }

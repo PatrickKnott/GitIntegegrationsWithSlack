@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -44,6 +50,15 @@
     </Reference>
     <Reference Include="Polly, Version=5.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Polly.5.8.0\lib\net45\Polly.dll</HintPath>
+    </Reference>
+    <Reference Include="RetailSuccess.DependencyInjection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RetailSuccess.DependencyInjection.0.1.0-beta00297\lib\netstandard2.0\RetailSuccess.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="RetailSuccess.Paramore.Brighter.DependencyInjection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RetailSuccess.Paramore.Brighter.DependencyInjection.0.6.0\lib\netstandard2.0\RetailSuccess.Paramore.Brighter.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="RetailSuccess.Paramore.Darker.DependencyInjection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RetailSuccess.Paramore.Darker.DependencyInjection.0.2.0\lib\netstandard2.0\RetailSuccess.Paramore.Darker.DependencyInjection.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -72,6 +87,8 @@
     <Compile Include="Commands\EnableRequiredStatusChecksCommandHandler.cs" />
     <Compile Include="Commands\SetDefaultBranchCommand.cs" />
     <Compile Include="Commands\SetDefaultBranchCommandHandler.cs" />
+    <Compile Include="DependencyInjectionExtensions.cs" />
+    <Compile Include="GitHubClientOptions.cs" />
     <Compile Include="Queries\GetTeamIdQuery.cs" />
     <Compile Include="Queries\GetRepositoryByNameQuery.cs" />
     <Compile Include="Queries\GetRepositoryByIdQuery.cs" />
@@ -81,13 +98,11 @@
     <Compile Include="Queries\GetRepositoryByNameQueryResult.cs" />
     <Compile Include="Queries\GetTeamIdQueryHandler.cs" />
     <Compile Include="Queries\GetTeamIdQueryResult.cs" />
-    <Compile Include="SetUpRepositoryCommandHandler.cs" />
-    <Compile Include="ConsoleLogger.cs" />
-    <Compile Include="IExceptionLogger.cs" />
-    <Compile Include="GitClient.cs" />
+    <Compile Include="GitProcessor.cs" />
     <Compile Include="GitCredentials.cs" />
     <Compile Include="HelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunSetUpRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

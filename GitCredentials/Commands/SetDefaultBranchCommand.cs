@@ -14,7 +14,7 @@ namespace GitIntegrationsWithSlack.Commands
             public Repository Repository { get; }
             public string BranchName { get; }
 
-            public Command(Repository repository, string branchName) : base( Guid.NewGuid())
+            public Command(Repository repository, string branchName = "develop") : base( Guid.NewGuid())
             {
                 Repository = repository;
                 BranchName = branchName;

@@ -17,14 +17,13 @@ namespace GitIntegrationsWithSlack.Queries
 
             public override async Task<QueryResult> ExecuteAsync(Query query, CancellationToken cancellationToken = new CancellationToken())
             {
-
                 var repository = await _client.Repository.Get(query.Owner, query.RepositoryName);
                 return new QueryResult() { Repository = repository };
             }
 
-            public QueryHandler(GitHubClient client)
+            public QueryHandler(GitHubClientOptions options)
             {
-                _client = client;
+                _client = options.GitHubClientFactory();
             }
         }
     }

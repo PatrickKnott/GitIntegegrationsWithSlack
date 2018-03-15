@@ -14,9 +14,9 @@ namespace GitIntegrationsWithSlack.Commands
         public class CommandHandler : RequestHandlerAsync<Command>
         {
             private readonly GitHubClient _client;
-            public CommandHandler(GitHubClient client)
+            public CommandHandler(GitHubClientOptions options)
             {
-                _client = client;
+                _client = options.GitHubClientFactory();
             }
 
             public override async Task<Command> HandleAsync(Command command, CancellationToken cancellationToken = new CancellationToken())
@@ -24,7 +24,7 @@ namespace GitIntegrationsWithSlack.Commands
                 var statusChecksUpdate =
                     new BranchProtectionSettingsUpdate(
                         new BranchProtectionRequiredStatusChecksUpdate(true, new List<string>()));
-                await _client.Repository.Branch.UpdateBranchProtection(command.Repository.Id, command.BranchName, statusChecksUpdate);
+                await _client.Repository.Branch.UpdateBranchProtection(command.RepositoryId, command.BranchName, statusChecksUpdate);
                 return await base.HandleAsync(command, cancellationToken);
             }
         }

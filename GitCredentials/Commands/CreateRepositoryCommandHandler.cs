@@ -15,9 +15,9 @@ namespace GitIntegrationsWithSlack.Commands
         {
             private readonly GitHubClient _client;
 
-            public CommandHandler(GitHubClient client)
+            public CommandHandler(GitHubClientOptions options)
             {
-                _client = client;
+                _client = options.GitHubClientFactory();
             }
             public override async Task<Command> HandleAsync(Command command, CancellationToken cancellationToken = default(CancellationToken))
             {
@@ -27,7 +27,7 @@ namespace GitIntegrationsWithSlack.Commands
                     GitignoreTemplate = "VisualStudio",
                     HasIssues = false
                 };
-                await _client.Repository.Create(command.Organization, newRepository);
+                var x = await _client.Repository.Create(command.Organization, newRepository);
                 return await base.HandleAsync(command, cancellationToken);
             }
         }

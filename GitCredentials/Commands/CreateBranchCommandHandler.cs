@@ -15,16 +15,16 @@ namespace GitIntegrationsWithSlack.Commands
         {
             private readonly GitHubClient _client;
 
-            public CommandHandler(GitHubClient client)
+            public CommandHandler(GitHubClientOptions options)
             {
-                _client = client;
+                _client = options.GitHubClientFactory();
             }
 
             public override async Task<Command> HandleAsync(Command command,
                 CancellationToken cancellationToken = new CancellationToken())
             {
-                var masterBranch = await _client.Git.Reference.Get(command.Repository.Id, command.OriginalBranch);
-                await _client.Git.Reference.Create(command.Repository.Id,
+                var masterBranch = await _client.Git.Reference.Get(command.RepositoryId, command.OriginalBranch);
+                await _client.Git.Reference.Create(command.RepositoryId,
                     new NewReference(command.NewBranch, masterBranch.Object.Sha));
                 return await base.HandleAsync(command, cancellationToken);
             }

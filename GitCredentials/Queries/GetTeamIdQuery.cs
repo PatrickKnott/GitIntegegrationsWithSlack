@@ -16,6 +16,7 @@ namespace GitIntegrationsWithSlack.Queries
 
             public Query(string organization, string teamName)
             {
+                
                 Organization = organization;
                 TeamName = teamName;
             }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GitIntegrationsWithSlack.Queries;
@@ -18,9 +15,9 @@ namespace GitIntegrationsWithSlack.Commands
             private readonly GitHubClient _client;
             private readonly IQueryProcessor _queryProcessor;
 
-            public CommandHandler(GitHubClient client, IQueryProcessor queryProcessor)
+            public CommandHandler(GitHubClientOptions options, IQueryProcessor queryProcessor)
             {
-                _client = client;
+                _client = options.GitHubClientFactory();
                 _queryProcessor = queryProcessor;
             }
 

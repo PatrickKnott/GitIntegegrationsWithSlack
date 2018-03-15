@@ -15,9 +15,9 @@ namespace GitIntegrationsWithSlack.Commands
         {
             private readonly GitHubClient _client;
 
-            public CommandHandler(GitHubClient client)
+            public CommandHandler(GitHubClientOptions options)
             {
-                _client = client;
+                _client = options.GitHubClientFactory();
             }
 
             public override async Task<Command> HandleAsync(Command command,
@@ -25,8 +25,8 @@ namespace GitIntegrationsWithSlack.Commands
             {
                 var pushSettingsUpdate =
                     new BranchProtectionSettingsUpdate(new BranchProtectionRequiredReviewsUpdate(false, false));
-                await _client.Repository.Branch.UpdateBranchProtection(command.Repository.Id, command.BranchName, pushSettingsUpdate);
-                await _client.Repository.Branch.RemoveReviewEnforcement(command.Repository.Id, command.BranchName);
+                await _client.Repository.Branch.UpdateBranchProtection(command.RepositoryId, command.BranchName, pushSettingsUpdate);
+                await _client.Repository.Branch.RemoveReviewEnforcement(command.RepositoryId, command.BranchName);
                 return await base.HandleAsync(command, cancellationToken);
             }
 

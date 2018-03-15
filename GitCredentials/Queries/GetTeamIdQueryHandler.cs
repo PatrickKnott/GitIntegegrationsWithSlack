@@ -16,9 +16,9 @@ namespace GitIntegrationsWithSlack.Queries
         {
             private readonly GitHubClient _client;
 
-            public QueryHandler(GitHubClient client)
+            public QueryHandler(GitHubClientOptions options)
             {
-                _client = client;
+                _client = options.GitHubClientFactory();
             }
 
             public override async Task<QueryResult> ExecuteAsync(Query query, CancellationToken cancellationToken = default(CancellationToken))

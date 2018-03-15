@@ -13,14 +13,12 @@ namespace GitIntegrationsWithSlack.Commands
         {
             public string RepositoryName { get; }
             public string Organization { get; }
-            public Repository Repository { get; }
             public string TeamName { get; }
 
-            public Command(string repositoryName, string organization, Repository repository, string teamName = "Posim") : base(Guid.NewGuid())
+            public Command(string repositoryName, string organization, string teamName = "Posim") : base(Guid.NewGuid())
             {
                 RepositoryName = repositoryName;
                 Organization = organization;
-                Repository = repository;
                 TeamName = teamName;
             }
         }
