@@ -10,7 +10,7 @@ namespace GitIntegrationsWithSlack
     {
         public static async Task SetUpNewRepository(string repositoryName, string organizationName = "Retail-Success", string defaultTeamName = "Posim", IExceptionLogger logger = null)
         {
-            var credentials = new GitCredentials("PatrickKnott", "3435cd039c521dcf6b8af4a81f492fd542d1c1eb");
+            var credentials = new GitCredentials("PatrickKnott", "");
             IExceptionLogger thisLogger = new ConsoleLogger();
             if (logger != null)
             {
